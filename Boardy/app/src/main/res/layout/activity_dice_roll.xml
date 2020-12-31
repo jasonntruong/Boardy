@@ -14,7 +14,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dicebackground" />
+        app:srcCompat="@drawable/dicebackgroundtwo" />
+
+
+    <ImageView
+        android:id="@+id/diceshadow"
+        android:layout_width="197dp"
+        android:layout_height="185dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="#007DE1"
+
+        />
 
     <ImageView
         android:id="@+id/dice"
@@ -24,17 +38,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background = "@drawable/diceaa"
-         />
+        android:background = "@drawable/dicefd"
 
-    <Button
-        android:id="@+id/testbutton"
+        />
+
+
+    <TextView
+        android:id="@+id/instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:fontFamily="@font/bowlby"
+        android:text="SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL
+                    SHAKE TO ROLL"
+        android:textColor="#007DE1"
+        android:textSize="45sp"
+        android:gravity = "center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dice" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rolled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bowlby"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:text="6"
+        android:alpha = "0.0"
+        android:textColor="#FFFFFF"
+        android:textSize="120sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diceshadow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
