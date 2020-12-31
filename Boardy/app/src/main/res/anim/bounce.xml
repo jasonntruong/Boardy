@@ -3,7 +3,6 @@
     android:interpolator="@android:anim/bounce_interpolator">
 
     <scale
-        android:startOffset="2000"
         android:duration="1000"
         android:fromXScale="1.0"
         android:fromYScale="0.0"

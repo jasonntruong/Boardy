@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/diceaa" android:duration = "50"/>
+    <item android:drawable="@drawable/diceab" android:duration = "50"/>
+    <item android:drawable="@drawable/diceac" android:duration = "50"/>
+    <item android:drawable="@drawable/dicead" android:duration = "50"/>
+    <item android:drawable="@drawable/diceae" android:duration = "45"/>
+    <item android:drawable="@drawable/diceba" android:duration = "40"/>
+    <item android:drawable="@drawable/dicebb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicebc" android:duration = "35"/>
+    <item android:drawable="@drawable/dicebd" android:duration = "35"/>
+    <item android:drawable="@drawable/diceca" android:duration = "35"/>
+    <item android:drawable="@drawable/dicecb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicecc" android:duration = "35"/>
+    <item android:drawable="@drawable/dicecd" android:duration = "35"/>
+    <item android:drawable="@drawable/diceda" android:duration = "35"/>
+    <item android:drawable="@drawable/dicedb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicedc" android:duration = "35"/>
+    <item android:drawable="@drawable/diceaa" android:duration = "35"/>
+    <item android:drawable="@drawable/diceea" android:duration = "35"/>
+    <item android:drawable="@drawable/diceeb" android:duration = "35"/>
+    <item android:drawable="@drawable/diceec" android:duration = "35"/>
+    <item android:drawable="@drawable/diceed" android:duration = "35"/>
+    <item android:drawable="@drawable/dicefa" android:duration = "35"/>
+    <item android:drawable="@drawable/dicefb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicefc" android:duration = "35"/>
+    <item android:drawable="@drawable/dicefd" android:duration = "35"/>
+    <item android:drawable="@drawable/dicega" android:duration = "35"/>
+    <item android:drawable="@drawable/dicegb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicegc" android:duration = "35"/>
+    <item android:drawable="@drawable/dicegd" android:duration = "35"/>
+    <item android:drawable="@drawable/diceha" android:duration = "35"/>
+    <item android:drawable="@drawable/dicehb" android:duration = "35"/>
+    <item android:drawable="@drawable/dicehc" android:duration = "35"/>
+    <item android:drawable="@drawable/diceaa" android:duration = "35"/>
+    <item android:drawable="@drawable/diceab" android:duration = "35"/>
+    <item android:drawable="@drawable/diceac" android:duration = "35"/>
+    <item android:drawable="@drawable/dicead" android:duration = "35"/>
+    <item android:drawable="@drawable/diceae" android:duration = "35"/>
+
+</animation-list>
