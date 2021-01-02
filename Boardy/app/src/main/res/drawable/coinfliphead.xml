@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@drawable/coina" android:duration="30"/>
+    <item android:drawable="@drawable/coinb" android:duration="30"/>
+    <item android:drawable="@drawable/coinc" android:duration="30"/>
+    <item android:drawable="@drawable/coind" android:duration="30"/>
+    <item android:drawable="@drawable/coine" android:duration="30"/>
+    <item android:drawable="@drawable/coinf" android:duration="30"/>
+    <item android:drawable="@drawable/coing" android:duration="30"/>
+    <item android:drawable="@drawable/coinh" android:duration="30"/>
+    <item android:drawable="@drawable/coini" android:duration="30"/>
+    <item android:drawable="@drawable/coinj" android:duration="30"/>
+    <item android:drawable="@drawable/coink" android:duration="30"/>
+    <item android:drawable="@drawable/coinl" android:duration="30"/>
+    <item android:drawable="@drawable/coina" android:duration="30"/>
+    <item android:drawable="@drawable/coinb" android:duration="30"/>
+    <item android:drawable="@drawable/coinc" android:duration="30"/>
+    <item android:drawable="@drawable/coind" android:duration="30"/>
+    <item android:drawable="@drawable/coine" android:duration="30"/>
+    <item android:drawable="@drawable/coinf" android:duration="30"/>
+    <item android:drawable="@drawable/coing" android:duration="30"/>
+    <item android:drawable="@drawable/coinh" android:duration="30"/>
+    <item android:drawable="@drawable/coini" android:duration="30"/>
+    <item android:drawable="@drawable/coinj" android:duration="30"/>
+    <item android:drawable="@drawable/coink" android:duration="30"/>
+    <item android:drawable="@drawable/coinl" android:duration="30"/>
+    <item android:drawable="@drawable/coina" android:duration="30"/>
+    <item android:drawable="@drawable/coinb" android:duration="30"/>
+    <item android:drawable="@drawable/coinc" android:duration="30"/>
+    <item android:drawable="@drawable/coind" android:duration="30"/>
+    <item android:drawable="@drawable/coine" android:duration="30"/>
+    <item android:drawable="@drawable/coinf" android:duration="30"/>
+    <item android:drawable="@drawable/coing" android:duration="30"/>
+    <item android:drawable="@drawable/coinh" android:duration="30"/>
+    <item android:drawable="@drawable/coini" android:duration="30"/>
+    <item android:drawable="@drawable/coinj" android:duration="30"/>
+    <item android:drawable="@drawable/coink" android:duration="30"/>
+    <item android:drawable="@drawable/coinl" android:duration="30"/>
+    <item android:drawable="@drawable/coina" android:duration="30"/>
+
+
+
+</animation-list>

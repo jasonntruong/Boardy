@@ -114,12 +114,12 @@ public class DiceRoll extends AppCompatActivity {
 
             if (sensorAccel > 15){
 
-                if (instructions.getAlpha() != 0){
+                if (instructions.getAlpha() != 0) {
                     diceshadow.setAlpha(255);
                     instructions.setAlpha(0);
                     instructions.clearAnimation();
-
                 }
+
 
                 dice = (ImageView)findViewById(R.id.dice);
                 dice.setBackgroundResource(R.drawable.dicefd);
