@@ -15,11 +15,11 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    Intent diceScreen, coinScreen;
+    Intent diceScreen, coinScreen, timerScreen;
 
     ImageView titleBoardy, diceone, dicetwo, background, Truong;
-    Animation fadein, diceonemovetomiddle, dicetwomovetomiddle, diceonemovetonew, bounce, blink, uptodown, uptodownCoin;
-    Button diceButton, coinflipButton;
+    Animation fadein, diceonemovetomiddle, dicetwomovetomiddle, diceonemovetonew, bounce, blink, uptodown, uptodownCoin, uptodownTimer;
+    Button diceButton, coinflipButton, timerButton;
 
 
     @Override
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         //Intent
         diceScreen = new Intent(getApplicationContext(), DiceRoll.class);
         coinScreen = new Intent(getApplicationContext(), CoinFlip.class);
+        timerScreen = new Intent(getApplicationContext(), TimerScreen.class);
 
         //ImageView
         background = (ImageView)findViewById(R.id.background);
@@ -47,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
         diceonemovetonew = AnimationUtils.loadAnimation(this, R.anim.diceonemovetonew);
         uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
         uptodownCoin = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        uptodownTimer = AnimationUtils.loadAnimation(this, R.anim.uptodown);
 
         //Buttons
         diceButton = (Button)findViewById(R.id.dice);
         coinflipButton = (Button)findViewById(R.id.coins);
+        timerButton = (Button)findViewById(R.id.timer);
 
         titleBoardy.setAlpha(0);
         Truong.setAlpha(0);
@@ -111,6 +114,28 @@ public class MainActivity extends AppCompatActivity {
                                         coinflipButton.setAlpha(255);
                                         coinflipButton.startAnimation(uptodownCoin);
 
+                                        uptodownCoin.setAnimationListener(new Animation.AnimationListener() {
+                                            @Override
+                                            public void onAnimationStart(Animation animation) {
+
+                                            }
+
+                                            @Override
+                                            public void onAnimationEnd(Animation animation) {
+
+                                                timerButton.setAlpha(255);
+                                                timerButton.startAnimation(uptodownTimer);
+                                                coinflipButton.clearAnimation();
+
+                                            }
+
+                                            @Override
+                                            public void onAnimationRepeat(Animation animation) {
+
+                                            }
+                                        });
+
+
                                     }
 
                                     @Override
@@ -145,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
         diceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +184,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 startActivity(coinScreen);
 
+            }
+        });
+
+        timerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(timerScreen);
             }
         });
 
