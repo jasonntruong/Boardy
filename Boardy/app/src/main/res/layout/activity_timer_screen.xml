@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
-        android:autoText="false"
+
         android:ems="2"
 
         android:fontFamily="@font/gillsans"
@@ -78,6 +78,7 @@
         android:layout_marginRight="150dp"
         android:layout_marginBottom="170dp"
         android:ems="2"
+
         android:inputType="number"
         android:fontFamily="@font/gillsans"
         android:gravity="center_horizontal"
@@ -86,5 +87,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minutes" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="TIMER COMPLETE"
+        android:alpha = "0"
+        android:clickable="false"
+        android:textColor="#FFFFFF"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
