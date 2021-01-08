@@ -160,7 +160,7 @@ public class TimerScreen extends AppCompatActivity {
                 righttoleft.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
- 
+
                     }
 
                     @Override

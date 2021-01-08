@@ -15,11 +15,11 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    Intent diceScreen, coinScreen, timerScreen;
+    Intent diceScreen, coinScreen, timerScreen, scoresheetScreen;
 
     ImageView titleBoardy, diceone, dicetwo, background, Truong;
-    Animation fadein, diceonemovetomiddle, dicetwomovetomiddle, diceonemovetonew, bounce, blink, uptodown, uptodownCoin, uptodownTimer;
-    Button diceButton, coinflipButton, timerButton;
+    Animation fadein, diceonemovetomiddle, dicetwomovetomiddle, diceonemovetonew, bounce, blink, uptodown, uptodownCoin, uptodownTimer, uptodownScoresheet;
+    Button diceButton, coinflipButton, timerButton, scoresheetButton;
 
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         diceScreen = new Intent(getApplicationContext(), DiceRoll.class);
         coinScreen = new Intent(getApplicationContext(), CoinFlip.class);
         timerScreen = new Intent(getApplicationContext(), TimerScreen.class);
+        scoresheetScreen = new Intent(getApplicationContext(), ScoreSheet.class);
 
         //ImageView
         background = (ImageView)findViewById(R.id.background);
@@ -49,11 +50,13 @@ public class MainActivity extends AppCompatActivity {
         uptodown = AnimationUtils.loadAnimation(this, R.anim.uptodown);
         uptodownCoin = AnimationUtils.loadAnimation(this, R.anim.uptodown);
         uptodownTimer = AnimationUtils.loadAnimation(this, R.anim.uptodown);
+        uptodownScoresheet = AnimationUtils.loadAnimation(this, R.anim.uptodown);
 
         //Buttons
         diceButton = (Button)findViewById(R.id.dice);
         coinflipButton = (Button)findViewById(R.id.coins);
         timerButton = (Button)findViewById(R.id.timer);
+        scoresheetButton = findViewById(R.id.scoresheet);
 
         titleBoardy.setAlpha(0);
         Truong.setAlpha(0);
@@ -125,7 +128,26 @@ public class MainActivity extends AppCompatActivity {
 
                                                 timerButton.setAlpha(255);
                                                 timerButton.startAnimation(uptodownTimer);
-                                                coinflipButton.clearAnimation();
+
+                                                uptodownTimer.setAnimationListener(new Animation.AnimationListener() {
+                                                    @Override
+                                                    public void onAnimationStart(Animation animation) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationEnd(Animation animation) {
+
+                                                        scoresheetButton.setAlpha(255);
+                                                        scoresheetButton.startAnimation(uptodownScoresheet);
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAnimationRepeat(Animation animation) {
+
+                                                    }
+                                                });
 
                                             }
 
@@ -194,6 +216,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        scoresheetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(scoresheetScreen);
+            }
+        });
 
     }
 }
