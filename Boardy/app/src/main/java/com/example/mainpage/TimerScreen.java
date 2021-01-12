@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class TimerScreen extends AppCompatActivity {
 
     EditText minutes, seconds;
-    Button buttonTest, buttonstopTest, timerComplete;
+    Button startButton, stopButton, timerComplete;
     int currentMinute, currentSecond, secondsInt;
     Intent backtomainTemp;
     CountDownTimer timer;
@@ -35,9 +35,9 @@ public class TimerScreen extends AppCompatActivity {
         righttoleft = AnimationUtils.loadAnimation(this, R.anim.righttoleft);
         lefttoright = AnimationUtils.loadAnimation(this, R.anim.lefttoright);
 
-        buttonTest = (Button) findViewById(R.id.button);
-        buttonstopTest = findViewById(R.id.button2);
-        timerComplete = findViewById(R.id.button3);
+        startButton = (Button) findViewById(R.id.startbutton);
+        stopButton = findViewById(R.id.stopbutton);
+        timerComplete = findViewById(R.id.timerComplete);
 
         minutes = (EditText)findViewById(R.id.minutes);
         seconds = (EditText)findViewById(R.id.seconds);
@@ -47,13 +47,11 @@ public class TimerScreen extends AppCompatActivity {
 
         backtomainTemp = new Intent(getApplicationContext(), MainActivity.class);
 
-
-
-        buttonTest.setOnClickListener(new View.OnClickListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                buttonTest.setClickable(false);
+                startButton.setClickable(false);
 
                 if (String.valueOf(minutes.getText()).equals("")) {
                     minutes.setText("0");
@@ -69,8 +67,6 @@ public class TimerScreen extends AppCompatActivity {
                 secondsInt = currentMinute * 60 + currentSecond;
 
                 timer = new CountDownTimer(secondsInt*1000, 1000){
-
-
 
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -99,10 +95,10 @@ public class TimerScreen extends AppCompatActivity {
                         secondsWord.startAnimation(righttoleft);
                         minutes.startAnimation(righttoleft);
                         seconds.startAnimation(righttoleft);
-                        buttonTest.startAnimation(righttoleft);
-                        buttonstopTest.startAnimation(righttoleft);
+                        startButton.startAnimation(righttoleft);
+                        stopButton.startAnimation(righttoleft);
 
-                        buttonTest.setClickable(true);
+                        startButton.setClickable(true);
 
                         righttoleft.setAnimationListener(new Animation.AnimationListener() {
                             @Override
@@ -116,11 +112,11 @@ public class TimerScreen extends AppCompatActivity {
                                 secondsWord.setAlpha(0);
                                 minutes.setAlpha(0);
                                 seconds.setAlpha(0);
-                                buttonTest.setAlpha(0);
-                                buttonstopTest.setAlpha(0);
+                                startButton.setAlpha(0);
+                                stopButton.setAlpha(0);
                                 timerComplete.setAlpha(255);
                                 timerComplete.startAnimation(lefttoright);
-                                timerComplete.setClickable(true);
+                                timerComplete.setEnabled(true);
                             }
 
                             @Override
@@ -128,8 +124,6 @@ public class TimerScreen extends AppCompatActivity {
 
                             }
                         });
-
-
                     }
                 }.start();
 
@@ -137,7 +131,7 @@ public class TimerScreen extends AppCompatActivity {
 
         });
 
-        buttonstopTest.setOnLongClickListener(new View.OnLongClickListener() {
+        stopButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 try{
@@ -145,7 +139,7 @@ public class TimerScreen extends AppCompatActivity {
                 } catch (NullPointerException e) {
 
                 } finally {
-                    buttonTest.setClickable(true);
+                    startButton.setClickable(true);
                 }
 
                 return false;
@@ -169,17 +163,17 @@ public class TimerScreen extends AppCompatActivity {
                         secondsWord.setAlpha(255);
                         minutes.setAlpha(255);
                         seconds.setAlpha(255);
-                        buttonTest.setAlpha(255);
-                        buttonstopTest.setAlpha(255);
+                        startButton.setAlpha(255);
+                        stopButton.setAlpha(255);
                         minuteWord.startAnimation(lefttoright);
                         secondsWord.startAnimation(lefttoright);
                         minutes.startAnimation(lefttoright);
                         seconds.startAnimation(lefttoright);
-                        buttonTest.startAnimation(lefttoright);
-                        buttonstopTest.startAnimation(lefttoright);
+                        startButton.startAnimation(lefttoright);
+                        stopButton.startAnimation(lefttoright);
 
                         timerComplete.setAlpha(0);
-                        timerComplete.setClickable(false);
+                        timerComplete.setEnabled(false);
 
                     }
 

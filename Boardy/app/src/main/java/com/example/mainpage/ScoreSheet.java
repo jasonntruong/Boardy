@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,8 +28,7 @@ public class ScoreSheet extends AppCompatActivity {
     List<EditText> allNames, allPoints;
 
     EditText scoreboardTitle, name, points;
-    Button sendToFile;
-    TextView previousText;
+    Button save, clear;
 
     protected void getAllFiles(File[] allFiles){
         for (int i = 0; i < allFiles.length; i++){
@@ -47,9 +44,9 @@ public class ScoreSheet extends AppCompatActivity {
         }
     }
 
-    protected void writeFile(File file, String message){
+    protected void writeFile(File file, String message, Boolean append){
         try {
-            outStream = new FileOutputStream(file);
+            outStream = new FileOutputStream(file, append);
             outStream.write(message.getBytes());
             outStream.close();
         } catch (FileNotFoundException e) {
@@ -82,8 +79,8 @@ public class ScoreSheet extends AppCompatActivity {
 
         mainActivity = new Intent(getApplicationContext(), MainActivity.class);
 
-        sendToFile = findViewById(R.id.sendToFile);
-        previousText = findViewById(R.id.previousText);
+        save = findViewById(R.id.save);
+        clear = findViewById(R.id.clear);
         scoreboardTitle = findViewById(R.id.scoreboardTitle);
 
         name = findViewById(R.id.name1);
@@ -93,57 +90,53 @@ public class ScoreSheet extends AppCompatActivity {
         dir = new File(String.valueOf(path));
         allFiles = dir.listFiles();
 
-//        allNames = new ArrayList(){{
-//            allNames.add((EditText) findViewById(R.id.name0));
-//            allNames.add((EditText) findViewById(R.id.name1));
-//            allNames.add((EditText) findViewById(R.id.name2));
-//            allNames.add((EditText) findViewById(R.id.name3));
-//            allNames.add((EditText) findViewById(R.id.name4));
-//            allNames.add((EditText) findViewById(R.id.name5));
-//            allNames.add((EditText) findViewById(R.id.name6));
-//            allNames.add((EditText) findViewById(R.id.name7));
-//            allNames.add((EditText) findViewById(R.id.name8));
-//        }};
-//
-//        allPoints = new ArrayList(){{
-//            allPoints.add((EditText) findViewById(R.id.points0));
-//            allPoints.add((EditText) findViewById(R.id.points1));
-//            allPoints.add((EditText) findViewById(R.id.points2));
-//            allPoints.add((EditText) findViewById(R.id.points3));
-//            allPoints.add((EditText) findViewById(R.id.points4));
-//            allPoints.add((EditText) findViewById(R.id.points5));
-//            allPoints.add((EditText) findViewById(R.id.points6));
-//            allPoints.add((EditText) findViewById(R.id.points7));
-//            allPoints.add((EditText) findViewById(R.id.points8));
-//        }};
+        allNames = new ArrayList();
+        allPoints = new ArrayList();
+
+        allNames.add((EditText) findViewById(R.id.name0));
+        allNames.add((EditText) findViewById(R.id.name1));
+        allNames.add((EditText) findViewById(R.id.name2));
+        allNames.add((EditText) findViewById(R.id.name3));
+        allNames.add((EditText) findViewById(R.id.name4));
+        allNames.add((EditText) findViewById(R.id.name5));
+        allNames.add((EditText) findViewById(R.id.name6));
+        allNames.add((EditText) findViewById(R.id.name7));
+        allNames.add((EditText) findViewById(R.id.name8));
+
+        allPoints.add((EditText) findViewById(R.id.points0));
+        allPoints.add((EditText) findViewById(R.id.points1));
+        allPoints.add((EditText) findViewById(R.id.points2));
+        allPoints.add((EditText) findViewById(R.id.points3));
+        allPoints.add((EditText) findViewById(R.id.points4));
+        allPoints.add((EditText) findViewById(R.id.points5));
+        allPoints.add((EditText) findViewById(R.id.points6));
+        allPoints.add((EditText) findViewById(R.id.points7));
+        allPoints.add((EditText) findViewById(R.id.points8));
 
         Log.d("File", String.valueOf(path));
 
         if (allFiles.length >= 1){
             file = allFiles[0];
             String content = readFile(file);
-            String[] contentList = content.split(".");
-            Log.d("Leng", String.valueOf(contentList.length));
+            Log.d("Initial", content);
+            String[] contentList = content.split("\\.");
+            Log.d("Length", String.valueOf(contentList.length));
 
-            if (contentList.length >= 1){
-
-                    String[] innerContent = String.valueOf(contentList[0]).split(",");
-                    name.setText(innerContent[0]);
-                    points.setText(innerContent[1]);
-                    Log.d("Content", String.valueOf(innerContent[0]));
-
-
+            try {
+                for (int i = 0; i < allNames.size(); i++) {
+                    String[] innerContent = String.valueOf(contentList[i]).split(",");
+                    if (innerContent.length == 2) {
+                        allNames.get(i).setText(innerContent[0]);
+                        allPoints.get(i).setText(innerContent[1]);
+                        Log.d("Content", String.valueOf(innerContent[0]));
+                    }
+                }
+            } catch (IndexOutOfBoundsException e) {
+                name.setText("");
+                points.setText("");
             }
-            else if (contentList.length == 0){
-                contentList = content.split(",");
-                name.setText(contentList[0]);
-                points.setText(contentList[1].replace(".", ""));
-                Log.d("Content", String.valueOf(contentList[0]));
-            }
-
-
-
         }
+
         else{
             file = new File(path, "score-sheet.txt");
         }
@@ -152,23 +145,42 @@ public class ScoreSheet extends AppCompatActivity {
 
         scoreboardTitle.setText(fileName);
 
-
         getAllFiles(allFiles);
 
-        previousText.setText("Previous Text: " + readFile(file));
-
-
-        sendToFile.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                writeFile(file, "", false);
+                for (int i = 0; i < allNames.size(); i++){
+                    String currentName = String.valueOf(allNames.get(i).getText()).replace(",", "").replace(".", "");
+                    String currentPoints = String.valueOf(allPoints.get(i).getText()).replace(",", "").replace(".", "");
+                    if (currentName.equals("") || currentPoints.equals("")){
+                        writeFile(file, ",.", true);
+                    }
+                    else{
+                        writeFile(file, currentName + "," + currentPoints + ".", true);
+                    }
 
+                }
 
-                    writeFile(file, name.getText() + "," + points.getText() + ".");
+                Log.d("File Content", readFile(file));
+
 
                 file.renameTo(new File(path,scoreboardTitle.getText() + ".txt"));
 
                 startActivity(mainActivity);
 
+            }
+        });
+
+        clear.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                for (int i = 0; i < allNames.size(); i++){
+                    allNames.get(i).setText("");
+                    allPoints.get(i).setText("");
+                }
+                return false;
             }
         });
 

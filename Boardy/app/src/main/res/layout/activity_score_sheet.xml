@@ -17,28 +17,15 @@
         app:layout_constraintVertical_bias="0.503"
         app:srcCompat="@drawable/scoresheetbackground" />
 
-    <TextView
-        android:id="@+id/previousText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
-
     <Button
-        android:id="@+id/sendToFile"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
         android:text="SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/previousText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -50,7 +37,7 @@
         android:layout_marginRight="15dp"
         android:stretchColumns="*"
 
-        app:layout_constraintBottom_toTopOf="@+id/sendToFile"
+        app:layout_constraintBottom_toTopOf="@+id/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -62,8 +49,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
                 android:fontFamily="@font/bowlby"
+                android:text="Name"
                 android:textColor="#000000"
                 android:textSize="25sp" />
 
@@ -71,8 +58,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Points"
                 android:fontFamily="@font/bowlby"
+                android:text="Points"
                 android:textColor="#000000"
                 android:textSize="25sp"
 
@@ -91,12 +78,11 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/points0"
@@ -104,12 +90,11 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -124,20 +109,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -150,31 +135,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/name2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="0"
-            android:fontFamily="@font/gillsans"
-            android:singleLine="true"
-            android:hint="Name"
-            android:textColor="#000000"
-            android:textColorHint="#555555"
-            android:textSize="20sp"
-            />
-        <EditText
-            android:id="@+id/points2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="0"
-            android:fontFamily="@font/gillsans"
-            android:singleLine="true"
-            android:hint="Points"
-            android:textColor="#000000"
-            android:textColorHint="#555555"
-            android:textSize="20sp"
+            <EditText
+                android:id="@+id/name2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="0"
+                android:fontFamily="@font/gillsans"
+                android:hint="Name"
+                android:singleLine="true"
+                android:textColor="#000000"
+                android:textColorHint="#555555"
+                android:textSize="20sp" />
 
-            />
+            <EditText
+                android:id="@+id/points2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="0"
+                android:fontFamily="@font/gillsans"
+                android:hint="Points"
+                android:singleLine="true"
+                android:textColor="#000000"
+                android:textColorHint="#555555"
+                android:textSize="20sp"
+
+                />
         </TableRow>
 
         <TableRow
@@ -187,20 +172,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -218,20 +203,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -249,20 +234,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -280,20 +265,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -311,20 +296,20 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
@@ -342,27 +327,26 @@
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Name"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/points8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="0"
                 android:fontFamily="@font/gillsans"
-                android:singleLine="true"
                 android:hint="Points"
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="#555555"
                 android:textSize="20sp"
 
                 />
         </TableRow>
-
 
 
     </TableLayout>
@@ -380,6 +364,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="CLEAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/save" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
