@@ -3,6 +3,7 @@ package com.example.mainpage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainScoreSheet extends AppCompatActivity {
+
+    Intent scoresheet;
+    Bundle fileBundle;
 
     File path, file, dir;
 
@@ -52,6 +56,9 @@ public class MainScoreSheet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_score_sheet);
+
+        scoresheet = new Intent(getApplicationContext(), ScoreSheet.class);
+        fileBundle = new Bundle();
 
         scoresheet1 = findViewById(R.id.scoresheet1);
         scoresheet2 = findViewById(R.id.scoresheet2);
@@ -137,6 +144,11 @@ public class MainScoreSheet extends AppCompatActivity {
         open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                fileBundle.putString("File name", currentButton.getText() + ".txt");
+                scoresheet.putExtras(fileBundle);
+                startActivity(scoresheet);
+
             }
         });
 
@@ -148,7 +160,7 @@ public class MainScoreSheet extends AppCompatActivity {
                     int index = allFiles.length;
 
                     file = new File(path, allButtons.get(index).getText() + ".txt");
-                    
+
                     try {
                         file.createNewFile();
                     } catch (IOException e) {

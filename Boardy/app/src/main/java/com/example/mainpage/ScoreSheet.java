@@ -18,31 +18,18 @@ import java.util.List;
 
 
 public class ScoreSheet extends AppCompatActivity {
-    Intent mainActivity;
+    Intent mainScoresheet;
+    Bundle fileBundle;
 
     FileOutputStream outStream;
     FileInputStream inStream;
-    File file, path, dir;
+    File file, path;
     File[] allFiles;
 
     List<EditText> allNames, allPoints;
 
     EditText scoreboardTitle, name, points;
     Button save, clear;
-
-    protected void getAllFiles(File[] allFiles){
-        for (int i = 0; i < allFiles.length; i++){
-            Log.d("File name", allFiles[i].getName());
-        }
-
-    }
-
-    protected void deleteAllFiles(File[] allFiles){
-        for (int i = 0; i < allFiles.length; i++){
-            allFiles[i].delete();
-            Log.d("Deleted", allFiles[i].getName());
-        }
-    }
 
     protected void writeFile(File file, String message, Boolean append){
         try {
@@ -77,7 +64,8 @@ public class ScoreSheet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_sheet);
 
-        mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+        mainScoresheet = new Intent(getApplicationContext(), MainScoreSheet.class);
+        fileBundle = getIntent().getExtras();
 
         save = findViewById(R.id.save);
         clear = findViewById(R.id.clear);
@@ -87,8 +75,8 @@ public class ScoreSheet extends AppCompatActivity {
         points = findViewById(R.id.points1);
 
         path = getApplicationContext().getFilesDir();
-        dir = new File(String.valueOf(path));
-        allFiles = dir.listFiles();
+
+        allFiles = path.listFiles();
 
         allNames = new ArrayList();
         allPoints = new ArrayList();
@@ -115,37 +103,35 @@ public class ScoreSheet extends AppCompatActivity {
 
         Log.d("File", String.valueOf(path));
 
-        if (allFiles.length >= 1){
-            file = allFiles[0];
-            String content = readFile(file);
-            Log.d("Initial", content);
-            String[] contentList = content.split("\\.");
-            Log.d("Length", String.valueOf(contentList.length));
-
-            try {
-                for (int i = 0; i < allNames.size(); i++) {
-                    String[] innerContent = String.valueOf(contentList[i]).split(",");
-                    if (innerContent.length == 2) {
-                        allNames.get(i).setText(innerContent[0]);
-                        allPoints.get(i).setText(innerContent[1]);
-                        Log.d("Content", String.valueOf(innerContent[0]));
-                    }
-                }
-            } catch (IndexOutOfBoundsException e) {
-                name.setText("");
-                points.setText("");
+        String fileName = fileBundle.getString("File name");
+        for (int i = 0; i < allFiles.length; i++){
+            if (allFiles[i].getName().equals(fileName)){
+                file = allFiles[i];
+                break;
             }
         }
+        String content = readFile(file);
+        Log.d("Initial", content);
+        String[] contentList = content.split("\\.");
+        Log.d("Length", String.valueOf(contentList.length));
 
-        else{
-            file = new File(path, "score-sheet.txt");
+        try {
+            for (int i = 0; i < allNames.size(); i++) {
+                String[] innerContent = String.valueOf(contentList[i]).split(",");
+                if (innerContent.length == 2) {
+                    allNames.get(i).setText(innerContent[0]);
+                    allPoints.get(i).setText(innerContent[1]);
+                    Log.d("Content", String.valueOf(innerContent[0]));
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
+            name.setText("");
+            points.setText("");
         }
 
-        String fileName = file.getName().replace(".txt", "");
+        fileName = file.getName().replace(".txt", "");
 
         scoreboardTitle.setText(fileName);
-
-        getAllFiles(allFiles);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +154,7 @@ public class ScoreSheet extends AppCompatActivity {
 
                 file.renameTo(new File(path,scoreboardTitle.getText() + ".txt"));
 
-                startActivity(mainActivity);
+                startActivity(mainScoresheet);
 
             }
         });
