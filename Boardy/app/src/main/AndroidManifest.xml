@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScoreSheet"></activity>
+        <activity android:name=".MainScoreSheet"></activity>
+        <activity android:name=".ScoreSheet" />
         <activity android:name=".TimerScreen" />
         <activity android:name=".CoinFlip" />
         <activity android:name=".DiceRoll" />

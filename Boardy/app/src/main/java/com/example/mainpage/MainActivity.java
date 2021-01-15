@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         diceScreen = new Intent(getApplicationContext(), DiceRoll.class);
         coinScreen = new Intent(getApplicationContext(), CoinFlip.class);
         timerScreen = new Intent(getApplicationContext(), TimerScreen.class);
-        scoresheetScreen = new Intent(getApplicationContext(), ScoreSheet.class);
+        scoresheetScreen = new Intent(getApplicationContext(), MainScoreSheet.class);
 
         //ImageView
         background = (ImageView)findViewById(R.id.background);
