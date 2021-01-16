@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Intent
         diceScreen = new Intent(getApplicationContext(), DiceRoll.class);
         coinScreen = new Intent(getApplicationContext(), CoinFlip.class);

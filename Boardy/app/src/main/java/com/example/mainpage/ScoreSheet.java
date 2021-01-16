@@ -103,13 +103,8 @@ public class ScoreSheet extends AppCompatActivity {
 
         Log.d("File", String.valueOf(path));
 
-        String fileName = fileBundle.getString("File name");
-        for (int i = 0; i < allFiles.length; i++){
-            if (allFiles[i].getName().equals(fileName)){
-                file = allFiles[i];
-                break;
-            }
-        }
+        file = (File) fileBundle.getSerializable("File");
+
         String content = readFile(file);
         Log.d("Initial", content);
         String[] contentList = content.split("\\.");
@@ -129,7 +124,7 @@ public class ScoreSheet extends AppCompatActivity {
             points.setText("");
         }
 
-        fileName = file.getName().replace(".txt", "");
+        String fileName = file.getName().replace(".txt", "");
 
         scoreboardTitle.setText(fileName);
 
@@ -153,7 +148,7 @@ public class ScoreSheet extends AppCompatActivity {
 
 
                 file.renameTo(new File(path,scoreboardTitle.getText() + ".txt"));
-
+                finish();
                 startActivity(mainScoresheet);
 
             }
@@ -169,6 +164,6 @@ public class ScoreSheet extends AppCompatActivity {
                 return false;
             }
         });
-
     }
+
 }

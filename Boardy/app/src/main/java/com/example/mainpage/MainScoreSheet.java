@@ -2,7 +2,6 @@ package com.example.mainpage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +32,22 @@ public class MainScoreSheet extends AppCompatActivity {
         }
     }
 
+    protected File findFile (File[] allFiles, Button button){
+        String fileName = button.getText() + ".txt";
+
+        for (int i = 0; i < allFiles.length; i++){
+            if (allFiles[i].getName().equals(fileName)){
+                return allFiles[i];
+            }
+        }
+        return allFiles[0];
+    }
+    protected void deleteButton(File[] allFiles, Button button){
+        File deleteFile = findFile(allFiles, button);
+        deleteFile.delete();
+
+    }
+
     protected void addButton(File file, Button button){
         button.setAlpha(255);
         button.setEnabled(true);
@@ -43,6 +58,28 @@ public class MainScoreSheet extends AppCompatActivity {
         for (int i = 0; i < allFiles.length; i++){
             addButton(allFiles[i], allButtons.get(i));
         }
+    }
+
+    protected String getName(File[] allFiles){
+        String name = "";
+        if (allFiles.length == 0) {
+            return "scoresheet1.txt";
+        }
+        for (int i = 1; i <= 5; i++){
+            name = "scoresheet" + i + ".txt";
+            Boolean viableName = true;
+            for (File file : allFiles){
+                if (name.equals(file.getName())){
+                    viableName = false;
+                    break;
+                }
+            }
+
+            if (viableName == true){
+                return name;
+            }
+        }
+        return name;
     }
 
     protected void deleteAllFiles(File[] allFiles){
@@ -137,7 +174,21 @@ public class MainScoreSheet extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deleteButton(allFiles, currentButton);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        delete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
                 deleteAllFiles(allFiles);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+                return false;
             }
         });
 
@@ -145,7 +196,7 @@ public class MainScoreSheet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                fileBundle.putString("File name", currentButton.getText() + ".txt");
+                fileBundle.putSerializable("File", findFile(allFiles, currentButton));
                 scoresheet.putExtras(fileBundle);
                 startActivity(scoresheet);
 
@@ -155,11 +206,10 @@ public class MainScoreSheet extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Length", String.valueOf(allFiles.length));
                 if (allFiles.length < 5) {
                     int index = allFiles.length;
-
-                    file = new File(path, allButtons.get(index).getText() + ".txt");
+                    String fileName = getName(allFiles);
+                    file = new File(path, fileName);
 
                     try {
                         file.createNewFile();
@@ -177,4 +227,18 @@ public class MainScoreSheet extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        finish();
+    }
+
 }
